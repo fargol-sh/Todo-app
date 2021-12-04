@@ -1,0 +1,66 @@
+.todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-140%);
+
+  &__new {
+    border: .1px solid transparent;
+    border-radius: .5rem;
+    background-color: #fff;
+    width: 38%;
+    margin: 2rem 0;
+    padding: 2rem;
+    left: 30%;
+    &--radio-group {
+      display: inline-block;
+    }
+
+    &--radio-input {
+      display: none;
+    }
+
+    &--radio-label {
+      position: relative;
+      &:hover .todo__new--radio-button {
+        background: linear-gradient(
+        #fff, #fff) padding-box,
+        linear-gradient(
+        to right bottom,
+        hsl(192, 100%, 67%),
+        hsl(280, 87%, 65%)) border-box;
+        border: 1px solid transparent;
+      }
+    }
+
+    &--radio-button {
+      height: 2.3rem;
+      width: 2.3rem;
+      background: linear-gradient(
+      #fff, #fff) padding-box,
+      linear-gradient(
+      to right bottom,
+      #CDCDCD, #CDCDCD) border-box;
+      border: 1px solid #CDCDCD;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: -1.7rem;
+      transition: all .5s;
+    }
+
+    &--input {
+      width: 90%;
+      height: 2.5rem;
+      margin-left: 3.5rem;
+      border: none;
+      font-family: "Josefin Sans";
+      font-size: 1.8rem;
+      outline: none;
+      &::-webkit-input-placeholder {
+        font-family: "Josefin Sans";
+        font-size: 1.7rem;
+      }
+    }
+  }
+}

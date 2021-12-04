@@ -1,0 +1,21 @@
+.header {
+  height: 45.5vh;
+  background-image: url(../images/bg-desktop-light.jpg);
+  background-size: cover;
+  position: relative;
+  // display: flex;
+  // justify-content: space-between;
+
+  &-icon {
+    position: absolute;
+    top: 26%;
+    left: 67.5%;
+    cursor: pointer;
+  }
+}
+
+.heading {
+  position: absolute;
+  top: 25.5%;
+  left: 31%;
+}

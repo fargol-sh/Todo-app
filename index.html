@@ -3,25 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <!-- CSS stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- FAVICON -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- TITLE -->
   <title>Frontend Mentor | Todo app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
+  <div class="header">
+    <div class="heading">
+      <h1 class="heading-text">
+        Todo
+      </h1>
+    </div>
+    <div class="header-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+        <path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/>
+      </svg>
+    </div>
+  </div>
 
-  Todo
+  <main id="todo" class="todo">
+    <div class="todo__new">
+      <div class="todo__new--radio-group">
+        <input type="radio" class="todo__new--radio-input" id="small1" name="size">
+        <label for="small1" class="todo__new--radio-label">
+          <span class="todo__new--radio-button"></span>
+        </label>
+      </div>
+      <input type="text" name="new todo" class="todo__new--input" placeholder="Create a new todo...">
+    </div>
+    <div class="todo__list">
 
+    </div>
+  </main>
   <!-- Add dynamic number --> items left
-
   All
-  Active 
+  Active
   Completed
 
   Clear Completed
@@ -29,8 +52,8 @@
   Drag and drop to reorder list
 
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Fargol Shirvanifar</a>.
   </div>
 </body>
 </html>

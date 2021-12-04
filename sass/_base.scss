@@ -1,0 +1,26 @@
+// COLOR VARIABLES
+$color-primary-blue: hsl(220, 98%, 61%);
+$color-primary-grad1: hsl(192, 100%, 67%);
+$color-primary-grad2: hsl(280, 87%, 65%);
+// LIGHT THEME
+$color-gray-light: hsl(0, 0%, 98%);
+$color-grayish-blue-light-1: hsl(236, 33%, 92%);
+$color-grayish-blue-light-2: hsl(233, 11%, 84%);
+$color-grayish-blue-dark-1: hsl(236, 9%, 61%);
+$color-grayish-blue-dark-2: hsl(235, 19%, 35%);
+//DARK THEME
+
+// FONT VARIABLES
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
