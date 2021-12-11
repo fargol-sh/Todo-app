@@ -9,6 +9,9 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; }
 
+body {
+  background-color: #fafafa; }
+
 .heading-text {
   font-family: "Josefin Sans";
   font-weight: 700;
@@ -25,47 +28,47 @@ html {
   .header-icon {
     position: absolute;
     top: 26%;
-    left: 67.5%;
+    left: 67.8%;
     cursor: pointer; }
 
 .heading {
   position: absolute;
   top: 25.5%;
-  left: 31%; }
+  left: 31.5%; }
 
 .todo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-140%); }
-  .todo__new {
+  transform: translateY(-26%); }
+  .todo__new, .todo__list {
     border: .1px solid transparent;
     border-radius: .5rem;
     background-color: #fff;
     width: 38%;
-    margin: 2rem 0;
+    margin: 2rem 0 1rem 2rem;
     padding: 2rem;
     left: 30%; }
-    .todo__new--radio-group {
+    .todo__new--radio-group, .todo__list--radio-group {
       display: inline-block; }
-    .todo__new--radio-input {
+    .todo__new--radio-input, .todo__list--radio-input {
       display: none; }
-    .todo__new--radio-label {
+    .todo__new--radio-label, .todo__list--radio-label {
       position: relative; }
-      .todo__new--radio-label:hover .todo__new--radio-button {
+      .todo__new--radio-label:hover .todo__new--radio-button, .todo__list--radio-label:hover .todo__new--radio-button {
         background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #57ddff, #c058f3) border-box;
         border: 1px solid transparent; }
-    .todo__new--radio-button {
+    .todo__new--radio-button, .todo__list--radio-button {
       height: 2.3rem;
       width: 2.3rem;
-      background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #CDCDCD, #CDCDCD) border-box;
-      border: 1px solid #CDCDCD;
+      background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #e4e5f1, #e4e5f1) border-box;
+      border: 1px solid #e4e5f1;
       border-radius: 50%;
       display: inline-block;
       position: absolute;
       top: -1.7rem;
       transition: all .5s; }
-    .todo__new--input {
+    .todo__new--input, .todo__list--input {
       width: 90%;
       height: 2.5rem;
       margin-left: 3.5rem;
@@ -73,6 +76,48 @@ html {
       font-family: "Josefin Sans";
       font-size: 1.8rem;
       outline: none; }
-      .todo__new--input::-webkit-input-placeholder {
+      .todo__new--input::-webkit-input-placeholder, .todo__list--input::-webkit-input-placeholder {
         font-family: "Josefin Sans";
         font-size: 1.7rem; }
+  .todo__list {
+    box-shadow: 0 2.5rem 2rem rgba(0, 0, 0, 0.1);
+    font-family: "Josefin Sans";
+    font-size: 1.7rem;
+    padding: 0; }
+    .todo__list--radio-label {
+      color: #484b6a; }
+      .todo__list--radio-labelText {
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin-left: 4rem; }
+    .todo__list--radio-button {
+      top: -0.3rem; }
+    .todo__list--item {
+      border-bottom: 1px solid #e4e5f1;
+      padding: 2.5rem 2rem; }
+    .todo__list--footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem; }
+      .todo__list--footer-itemsLeftBox {
+        display: flex;
+        margin: 2rem; }
+      .todo__list--footer-itemsLeft {
+        transform: translateY(0.039rem);
+        font-size: 1.5rem;
+        color: #9394a5; }
+      .todo__list--footer-itemsLeftText {
+        font-weight: 100;
+        color: #9394a5; }
+      .todo__list--footer-status {
+        margin: 2rem; }
+      .todo__list--footer-statusItems {
+        text-decoration: none;
+        font-weight: 600;
+        color: #9394a5;
+        padding: .6rem; }
+      .todo__list--footer-clear {
+        margin: 2rem; }
+      .todo__list--footer-clearText {
+        text-decoration: none;
+        color: #9394a5; }

@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-140%);
+  transform: translateY(-26%);
 
-  &__new {
+  &__new,
+  &__list {
     border: .1px solid transparent;
     border-radius: .5rem;
     background-color: #fff;
     width: 38%;
-    margin: 2rem 0;
+    margin: 2rem 0 1rem 2rem;
     padding: 2rem;
     left: 30%;
     &--radio-group {
@@ -40,8 +41,8 @@
       #fff, #fff) padding-box,
       linear-gradient(
       to right bottom,
-      #CDCDCD, #CDCDCD) border-box;
-      border: 1px solid #CDCDCD;
+      $color-grayish-blue-light-1, $color-grayish-blue-light-1) border-box;
+      border: 1px solid $color-grayish-blue-light-1;
       border-radius: 50%;
       display: inline-block;
       position: absolute;
@@ -60,6 +61,63 @@
       &::-webkit-input-placeholder {
         font-family: "Josefin Sans";
         font-size: 1.7rem;
+      }
+    }
+  }
+
+  &__list {
+    box-shadow: 0 2.5rem 2rem rgba(#000, .1);
+    font-family: "Josefin Sans";
+    font-size: 1.7rem;
+    padding: 0;
+    &--radio-label {
+      color: $color-grayish-blue-dark-2;
+      &Text {
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin-left: 4rem;
+      }
+    }
+    &--radio-button {
+      top: -0.3rem;
+    }
+    &--item {
+      border-bottom: 1px solid $color-grayish-blue-light-1;
+      padding: 2.5rem 2rem;
+    }
+
+    &--footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      &-itemsLeftBox {
+        display: flex;
+        margin: 2rem;
+      }
+
+      &-itemsLeft {
+        transform: translateY(.039rem);
+        font-size: 1.5rem;
+        color: $color-grayish-blue-dark-1;
+      }
+
+      &-itemsLeftText {
+        font-weight: 100;
+        color: $color-grayish-blue-dark-1;
+      }
+
+      &-status {margin: 2rem;}
+      &-statusItems {
+        text-decoration: none;
+        font-weight: 600;
+        color: $color-grayish-blue-dark-1;
+        padding: .6rem;
+      }
+
+      &-clear {margin: 2rem;}
+      &-clearText {
+        text-decoration: none;
+        color: $color-grayish-blue-dark-1;
       }
     }
   }
