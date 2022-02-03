@@ -49,16 +49,13 @@ body {
     margin: 2rem 0 1rem 2rem;
     padding: 2rem;
     left: 30%; }
-    .todo__new--radio-group, .todo__list--radio-group {
+    .todo__new--checkbox-group, .todo__list--checkbox-group {
       display: inline-block; }
-    .todo__new--radio-input, .todo__list--radio-input {
+    .todo__new--checkbox-input, .todo__list--checkbox-input {
       display: none; }
-    .todo__new--radio-label, .todo__list--radio-label {
+    .todo__new--checkbox-label, .todo__list--checkbox-label {
       position: relative; }
-      .todo__new--radio-label:hover .todo__new--radio-button, .todo__list--radio-label:hover .todo__new--radio-button {
-        background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #57ddff, #c058f3) border-box;
-        border: 1px solid transparent; }
-    .todo__new--radio-button, .todo__list--radio-button {
+    .todo__new--checkbox-button, .todo__list--checkbox-button {
       height: 2.3rem;
       width: 2.3rem;
       background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #e4e5f1, #e4e5f1) border-box;
@@ -67,7 +64,7 @@ body {
       display: inline-block;
       position: absolute;
       top: -1.7rem;
-      transition: all .5s; }
+      transition: all .2s; }
     .todo__new--input, .todo__list--input {
       width: 90%;
       height: 2.5rem;
@@ -84,17 +81,54 @@ body {
     font-family: "Josefin Sans";
     font-size: 1.7rem;
     padding: 0; }
-    .todo__list--radio-label {
+    .todo__list--checkbox-label {
       color: #484b6a; }
-      .todo__list--radio-labelText {
-        font-size: 1.7rem;
-        font-weight: 600;
+      .todo__list--checkbox-labelText {
+        font-size: 1.8rem;
+        font-weight: 500;
         margin-left: 4rem; }
-    .todo__list--radio-button {
+    .todo__list--checkbox-button {
       top: -0.3rem; }
+    .todo__list--checkbox-button:after {
+      content: "";
+      display: block;
+      height: 2.3rem;
+      width: 2.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: -.1rem;
+      left: -.1rem;
+      background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
+      opacity: 0;
+      transition: all .2s ease;
+      transform: scale(0); }
+    .todo__list--checkbox-input:checked + .todo__list--checkbox-label .todo__list--checkbox-button:after {
+      opacity: 1;
+      transform: scale(1); }
+    .todo__list--checkbox-input:checked + .todo__list--checkbox-label .todo__list--checkbox-labelText {
+      color: #d2d3db;
+      text-decoration: line-through;
+      transition: all .2s; }
+    .todo__list--checkbox-input:checked + .todo__list--checkbox-label .todo__list--item-checkIcon {
+      opacity: 1; }
     .todo__list--item {
       border-bottom: 1px solid #e4e5f1;
-      padding: 2.5rem 2rem; }
+      padding: 2.5rem 2rem;
+      display: flex;
+      justify-content: space-between; }
+      .todo__list--item:hover .todo__list--item-crossIcon {
+        opacity: 1; }
+      .todo__list--item:hover .todo__list--checkbox-button {
+        background: linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, #57ddff, #c058f3) border-box;
+        border: 1px solid transparent; }
+      .todo__list--item-checkIcon {
+        position: absolute;
+        transform: translateX(50%);
+        opacity: 0;
+        transition: opacity .2s; }
+      .todo__list--item-crossIcon {
+        opacity: 0;
+        transition: opacity .4s; }
     .todo__list--footer {
       display: flex;
       justify-content: space-between;
@@ -121,3 +155,6 @@ body {
       .todo__list--footer-clearText {
         text-decoration: none;
         color: #9394a5; }
+
+.test {
+  fill: linear-gradient(to right bottom, #57ddff, #c058f3); }
