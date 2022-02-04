@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-26%);
+  transform: translateY(-22%);
 
   &__new,
   &__list {
@@ -63,12 +63,14 @@
     padding: 0;
     &--checkbox-label {
       color: $color-grayish-blue-dark-2;
+      cursor: pointer;
       &Text {
         font-size: 1.8rem;
         font-weight: 500;
         margin-left: 4rem;
       }
     }
+
     &--checkbox-button {
       top: -0.3rem;
     }
@@ -162,21 +164,31 @@
         font-weight: 600;
         color: $color-grayish-blue-dark-1;
         padding: .6rem;
+        transition: all .2s;
+        &:hover {
+          color: $color-grayish-blue-dark-3;
+        }
       }
 
       &-clear {margin: 2rem;}
       &-clearText {
         text-decoration: none;
         color: $color-grayish-blue-dark-1;
+        transition: all .2s;
+        &:hover {
+          color: $color-grayish-blue-dark-3;
+        }
       }
     }
   }
-}
 
-.test {
-  fill: linear-gradient(
-  to right bottom,
-  hsl(192, 100%, 67%),
-  hsl(280, 87%, 65%)
-  );
+  &__footer {
+    transform: translateY(250%);
+    &-text {
+      color: $color-grayish-blue-dark-1;
+      font-family: "Josefin Sans";
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+  }
 }

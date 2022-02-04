@@ -40,7 +40,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-26%); }
+  transform: translateY(-22%); }
   .todo__new, .todo__list {
     border: .1px solid transparent;
     border-radius: .5rem;
@@ -82,7 +82,8 @@ body {
     font-size: 1.7rem;
     padding: 0; }
     .todo__list--checkbox-label {
-      color: #484b6a; }
+      color: #484b6a;
+      cursor: pointer; }
       .todo__list--checkbox-labelText {
         font-size: 1.8rem;
         font-weight: 500;
@@ -149,12 +150,40 @@ body {
         text-decoration: none;
         font-weight: 600;
         color: #9394a5;
-        padding: .6rem; }
+        padding: .6rem;
+        transition: all .2s; }
+        .todo__list--footer-statusItems:hover {
+          color: #4E4A5F; }
       .todo__list--footer-clear {
         margin: 2rem; }
       .todo__list--footer-clearText {
         text-decoration: none;
-        color: #9394a5; }
+        color: #9394a5;
+        transition: all .2s; }
+        .todo__list--footer-clearText:hover {
+          color: #4E4A5F; }
+  .todo__footer {
+    transform: translateY(250%); }
+    .todo__footer-text {
+      color: #9394a5;
+      font-family: "Josefin Sans";
+      font-size: 1.7rem;
+      font-weight: 400; }
 
-.test {
-  fill: linear-gradient(to right bottom, #57ddff, #c058f3); }
+.footer {
+  font-family: "Josefin Sans";
+  font-size: 1.7rem;
+  display: flex;
+  background-color: #484b6a;
+  justify-content: center;
+  color: #d2d3db;
+  padding: 3rem; }
+  .footer a {
+    color: #d2d3db;
+    text-decoration: none;
+    font-family: "Josefin Sans";
+    font-size: 1.7rem;
+    transition: all .2s; }
+    .footer a:hover {
+      color: #fff;
+      font-size: 1.85rem; }

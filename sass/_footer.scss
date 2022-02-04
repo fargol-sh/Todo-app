@@ -1,0 +1,20 @@
+.footer {
+  font-family: "Josefin Sans";
+  font-size: 1.7rem;
+  display: flex;
+  background-color: $color-grayish-blue-dark-2;
+  justify-content: center;
+  color: $color-grayish-blue-light-2;
+  padding: 3rem;
+  a {
+    color: $color-grayish-blue-light-2;
+    text-decoration: none;
+    font-family: "Josefin Sans";
+    font-size: 1.7rem;
+    transition: all .2s;
+    &:hover {
+      color: #fff;
+      font-size: 1.85rem;
+    }
+  }
+}
