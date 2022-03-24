@@ -70,8 +70,9 @@ const newItemHandler = function(ev) {
   if(ev.key === "Enter") {
     let newItem = document.createElement('div');
     newItem.className = 'todo__list--item';
-    //newTodo.innerHTML = '<div class="todo__list--checkbox-group"><input type="checkbox" class="todo__list--checkbox-input" id="small2" name="size"><label for="small2" class="todo__list--checkbox-label"><span class="todo__list--checkbox-button"></span><div class="todo__list--item-checkIcon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div><h2 class="todo__list--checkbox-labelText">Complete online JavaScript course</h2></label></div><div class="todo__list--item-crossIcon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></div>';
-    todoList.appendChild(todoNew);
+    newItem.innerHTML = `<div class="todo__list--checkbox-group"><input type="checkbox" class="todo__list--checkbox-input" id="small${todoListItems.length + 2}" name="size"><label for="small${todoListItems.length + 2}" class="todo__list--checkbox-label"><span class="todo__list--checkbox-button"></span><div class="todo__list--item-checkIcon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div><h2 class="todo__list--checkbox-labelText">${todoNewInput.value}</h2></label></div><div class="todo__list--item-crossIcon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></div>`;
+    todoList.insertBefore(newItem, todoList.children[todoListItems.length]);
+    todoNewInput.value = '';
   }
 }
 
@@ -105,6 +106,24 @@ const statusHandler = function(i) {
       }
     }
   }
+}
+
+const clearHandler = function() {
+  let newElements = [];
+  let todoLength = todoListItems.length;
+  for(let i = 0; i < todoLength; i++) {
+    if(todoListInputs[i].checked === true) {
+      // for(let k = 0; k < todoListItems.length; k++) {
+      //   if(k !== i) {
+      //       newElements.push(todoListItems[i]);
+      //   }
+      // }
+      // todoListItems = newElements;
+      // newElements = [];
+      todoList.removeChild(todoListItems[i]);
+    }
+  }
+
 }
 // EVENT LISTENRES
 // change mode
@@ -186,7 +205,7 @@ for(let i = 0; i < todoStatusItems.length; i++) {
   todoStatusItems[i].addEventListener('click', statusHandler.bind(this, i));
 }
 
-
-
+// todo list clear
+todoClear.addEventListener('click', clearHandler);
 
 ////
