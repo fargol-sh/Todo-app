@@ -17,7 +17,7 @@ let moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><
 let crossIcons = document.getElementsByClassName('todo__list--item-crossIcon');
 let mode = 0; // light mode by default
 let status = 0; // 0 : All , 1 : Active, 2 : Completed
-
+let index = 7;
 
 //HANDLERS
 const changeModeHandler = function() {
@@ -71,9 +71,56 @@ const newItemHandler = function(ev) {
   if(ev.key === "Enter") {
     let newItem = document.createElement('div');
     newItem.className = 'todo__list--item';
-    newItem.innerHTML = `<div class="todo__list--checkbox-group"><input type="checkbox" class="todo__list--checkbox-input" id="small${todoListItems.length + 2}" name="size"><label for="small${todoListItems.length + 2}" class="todo__list--checkbox-label"><span class="todo__list--checkbox-button"></span><div class="todo__list--item-checkIcon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div><h2 class="todo__list--checkbox-labelText">${todoNewInput.value}</h2></label></div><div class="todo__list--item-crossIcon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></div>`;
+    newItem.innerHTML = `<div class="todo__list--checkbox-group"><input type="checkbox" class="todo__list--checkbox-input" id="small${index + 1}" name="size"><label for="small${index + 1}" class="todo__list--checkbox-label"><span class="todo__list--checkbox-button"></span><div class="todo__list--item-checkIcon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div><h2 class="todo__list--checkbox-labelText">${todoNewInput.value}</h2></label></div><div class="todo__list--item-crossIcon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></div>`;
+    // add the new item
     todoList.insertBefore(newItem, todoList.children[todoListItems.length]);
     todoNewInput.value = '';
+    index = index + 1;
+    // change mode handler
+    if(mode === 0) {
+      mode = 1;
+      changeModeHandler();
+    } else {
+      mode = 0;
+      changeModeHandler();
+    }
+    // add event listeners to new item
+    todoListItems[todoListItems.length - 1].addEventListener('mouseenter', (event) => {
+      if(mode == 0) {
+        todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
+      } else {
+        todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#25273c, #25273c) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
+      }
+      todoListCheckboxButtons[todoListItems.length - 1].style.border = '1px solid transparent';
+    });
+
+    todoListItems[todoListItems.length - 1].addEventListener('mouseleave', (event) => {
+      if(mode == 0) { // light mode
+        todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(236, 33%, 92%), hsl(236, 33%, 92%)) border-box";
+        todoListCheckboxButtons[todoListItems.length - 1].style.border = '1px solid hsl(236, 33%, 92%)';
+      } else { // dark mode
+        todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#25273c, #25273c) padding-box, linear-gradient(to right bottom, #3A3C5A, #3A3C5A) border-box";
+        todoListCheckboxButtons[todoListItems.length - 1].style.border = '1px solid #3A3C5A';
+      }
+    });
+
+    todoListInputs[todoListItems.length - 1].addEventListener("change", (event) => {
+      if(event.currentTarget.checked === true) { // checked
+        if(mode === 0) { // light mode
+          todoListLabels[todoListItems.length - 1].style.color = 'hsl(233, 11%, 84%)';
+        } else { // dark mode
+          todoListLabels[todoListItems.length - 1].style.color = '#4E4A5F';
+        }
+      } else {   // unchecked
+        if(mode === 0) { // light mode
+          todoListLabels[todoListItems.length - 1].style.color = 'hsl(235, 19%, 35%)';
+        } else { // dark mode
+          todoListLabels[todoListItems.length - 1].style.color = 'hsl(236, 9%, 61%)';
+        }
+      }
+    });
+
+    crossIcons[todoListItems.length - 1].addEventListener('click', crossIconHandler.bind(this, todoListItems.length - 1));
   }
 }
 
@@ -172,7 +219,6 @@ todoClear.addEventListener('mouseleave', (event) => {
 for(let i = 0; i < todoListItems.length; i++) {
   todoListItems[i].addEventListener('mouseenter', (event) => {
     if(mode == 0) {
-      console.log(i);
       todoListCheckboxButtons[i].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
     } else {
       todoListCheckboxButtons[i].style.background = "linear-gradient(#25273c, #25273c) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
