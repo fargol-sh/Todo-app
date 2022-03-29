@@ -18,6 +18,8 @@ let crossIcons = document.getElementsByClassName('todo__list--item-crossIcon');
 let mode = 0; // light mode by default
 let status = 0; // 0 : All , 1 : Active, 2 : Completed
 let index = 7;
+let todoItemIds = [0, 1, 2, 3, 4, 5];
+
 
 //HANDLERS
 const changeModeHandler = function() {
@@ -75,6 +77,7 @@ const newItemHandler = function(ev) {
     // add the new item
     todoList.insertBefore(newItem, todoList.children[todoListItems.length]);
     todoNewInput.value = '';
+    todoItemIds.push(index - 1);
     index = index + 1;
     // change mode handler
     if(mode === 0) {
@@ -84,9 +87,10 @@ const newItemHandler = function(ev) {
       mode = 0;
       changeModeHandler();
     }
+
     // add event listeners to new item
     todoListItems[todoListItems.length - 1].addEventListener('mouseenter', (event) => {
-      if(mode == 0) {
+      if(mode === 0) {
         todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
       } else {
         todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#25273c, #25273c) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
@@ -95,7 +99,7 @@ const newItemHandler = function(ev) {
     });
 
     todoListItems[todoListItems.length - 1].addEventListener('mouseleave', (event) => {
-      if(mode == 0) { // light mode
+      if(mode === 0) { // light mode
         todoListCheckboxButtons[todoListItems.length - 1].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(236, 33%, 92%), hsl(236, 33%, 92%)) border-box";
         todoListCheckboxButtons[todoListItems.length - 1].style.border = '1px solid hsl(236, 33%, 92%)';
       } else { // dark mode
@@ -160,6 +164,7 @@ const clearHandler = function() {
   for(let i = 0; i < todoListItems.length; i++) {
     if(todoListInputs[i].checked === true) {
       todoList.removeChild(todoListItems[i]);
+      todoItemIds.splice(i, 1);
       i--;
     }
   }
@@ -167,6 +172,7 @@ const clearHandler = function() {
 
 const crossIconHandler = function(i) {
   todoList.removeChild(todoListItems[i]);
+  todoItemIds.splice(i, 1);
 }
 // EVENT LISTENRES
 // change mode
@@ -194,7 +200,7 @@ for(let i = 0; i < todoListInputs.length; i++) {
 //status and clear hover state
 for(let i = 0; i < todoStatusItems.length; i++) {
   todoStatusItems[i].addEventListener('mouseenter', (event) => {
-    if(mode == 0) { // light mode
+    if(mode === 0) { // light mode
       todoStatusItems[i].style.color = '#4E4A5F';
     } else { // dark mode
       todoStatusItems[i].style.color = 'hsl(0, 0%, 98%)';
@@ -205,7 +211,7 @@ for(let i = 0; i < todoStatusItems.length; i++) {
   });
 }
 todoClear.addEventListener('mouseenter', (event) => {
-  if(mode == 0) { // light mode
+  if(mode === 0) { // light mode
     todoClear.style.color = '#4E4A5F';
   } else { // dark mode
     todoClear.style.color = 'hsl(0, 0%, 98%)';
@@ -218,7 +224,7 @@ todoClear.addEventListener('mouseleave', (event) => {
 // checkbox hover state
 for(let i = 0; i < todoListItems.length; i++) {
   todoListItems[i].addEventListener('mouseenter', (event) => {
-    if(mode == 0) {
+    if(mode === 0) {
       todoListCheckboxButtons[i].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
     } else {
       todoListCheckboxButtons[i].style.background = "linear-gradient(#25273c, #25273c) padding-box, linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box";
@@ -227,7 +233,7 @@ for(let i = 0; i < todoListItems.length; i++) {
   });
 
   todoListItems[i].addEventListener('mouseleave', (event) => {
-    if(mode == 0) { // light mode
+    if(mode === 0) { // light mode
       todoListCheckboxButtons[i].style.background = "linear-gradient(#fff, #fff) padding-box, linear-gradient(to right bottom, hsl(236, 33%, 92%), hsl(236, 33%, 92%)) border-box";
       todoListCheckboxButtons[i].style.border = '1px solid hsl(236, 33%, 92%)';
     } else { // dark mode
@@ -253,4 +259,43 @@ todoClear.addEventListener('click', clearHandler);
 for(let i = 0; i < todoListItems.length; i++) {
   crossIcons[i].addEventListener('click', crossIconHandler.bind(this, i));
 }
+
+//drag and drop event listeners
+// mark draggable items:
+for(let i = 0; i < todoListItems.length; i++) {
+  todoListItems[i].addEventListener('dragstart', event => {
+    event.dataTransfer.setData('text/plain', todoItemIds[i]);
+    event.dataTransfer.effectAllowed = 'move';
+  });
+}
+// mark draggable area :
+todoList.addEventListener('dragenter', event => {
+  if(event.dataTransfer.types[0] === 'text/plain') {
+    event.preventDefault();
+  }
+});
+todoList.addEventListener('dragover', event => {
+  if(event.dataTransfer.types[0] === 'text/plain') {
+    event.preventDefault();
+  }
+})
+todoList.addEventListener('drop', event => {
+  const itemId = event.dataTransfer.getData('text/plain');
+  for(let i = 0; i < todoListItems.length; i++) {
+    if(todoIds[i] === itemId) {
+      
+    }
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
 ////
